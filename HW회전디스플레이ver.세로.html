@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 세로디스플레이 </title>
+    <style>
+        #wrapper {
+            width: 120px;
+            height: 320px;
+            margin: auto;
+            background: black;
+            position: relative; /*자식 포지션의 명시로 부모도 명시함*/
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        let arr = ["box0", "box1", "box2", "box3", "box4"];
+        //전역변수를 5개 확보
+        let boxArray = []; //배열을 선언하되, 그 크기를 결정하지 않음
+
+        //5개의 배열을 각각 top값을 감소시키자
+        function move() {
+            //console.log("move() 호출...");
+
+            //imgArray가 배열이므로 반복문 적용 가능
+            for (i = 0; i < boxArray.length; i++) {
+                boxArray[i].style.top = parseInt(boxArray[i].style.top) - 1 + "px";
+
+                //만약 box들의 위치가 -100보다 작아지면,
+                //아래쪽 끝으로 보낸다(420?넘는듯)
+                if (parseInt(boxArray[i].style.top) <= -100) {
+                    boxArray[i].style.top = 427 + "px";
+                }
+            }
+        }
+
+        //세로로 흘러가는 (5개)의 div 텍스트박스를 생성
+        function init() {
+            for (i = 0; i <= 4; i++) {
+                let box = document.createElement("div");
+                box.id = "box" + i;
+                box.innerText=i;
+                box.style.color="white";
+                box.style.fontWeight="bold";
+                box.style.fontSize=20+"px";
+                box.style.width = 100 + "px";
+                box.style.height = 100 + "px";
+                box.style.boxSizing = "border-box";
+                box.style.border = "5px solid white";
+                box.style.position = "absolute";
+                box.style.top = (105 * i) + "px";
+
+                //생성된 div box를 wrapper에 부착
+                let wrapper = document.getElementById("wrapper");
+                wrapper.appendChild(box);
+
+                //생성된 박스를 배열에 담음
+                boxArray.push(box);
+            }
+        }
+
+        addEventListener("load", function () {
+            init();
+
+            //움직이는 함수를 자동으로 호출
+            setInterval("move()", 10);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+
+    </div>
+</body>
+
+</html>

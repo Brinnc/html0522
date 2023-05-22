@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원갤러리PRAC</title>
+    <style>
+        #wrapper {
+            width: 200px;
+            height: 200px;
+            background: skyblue;
+            margin: auto;
+            position: relative;
+            /*자식 때문에 명시함*/
+
+        }
+    </style>
+    <script>
+
+        //초기화 함수. box div를 생성하고 그 안에 이미지 9개를 생성해 부착.
+        function init() {
+            let box = document.createElement("div"); //<div id="box"></div>
+            box.style.width = 200 * 3 + "px"
+            box.style.height = 200 * 3 + "px"
+            box.style.background = "pink";
+            box.style.position = "absolute"; //액자인 wrapper를 부모로 둠
+
+            box.style.left=0+"px";
+            box.style.top=0+"px";
+
+            //생성된 박스에 이미지 9개를 생성해 부착
+            //for문을 이용해 3x3짜리 반복문 
+            for (k = 1; k <= 3, k++) {
+                for (i = 1; i <= 3; i++) {
+                    let img = document.createElement("img"); //<img>
+                    img.src = "../images/m1.jpg";
+                    img.style.width = 200 + "px";
+                    img.style.height = 200 + "px";
+                    img.style.left = i * 200 + "px"; //가로(호수), 안쪽 for문
+                    img.style.top = k * 200 + "px"; //세로(층수), 바깥쪽 for문
+
+                    //box에 자식요소로 부착
+                    box.appendChild(img);
+
+                }
+            }
+
+            //액자인 wrapper에 생성된 box div를 자식으로 부착
+            let wrapper = document.getElementById("wrapper");
+            wrapper.appendChild("box");
+
+            //문서가 로드되면
+            addEventListener("load", function(){
+
+                init();
+            });
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>
+        targetX:0 <br>
+        targetY:0
+    </h1>
+    <div id="wrapper"></div>
+</body>
+
+</html>

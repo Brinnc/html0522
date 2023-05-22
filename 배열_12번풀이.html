@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12번풀이</title>
+    <script>
+        /*
+        내가 한것
+        let arr=new Array(20);
+
+        //1~10번째까지는 0을 대입, 11번째~20번째까지는 1을 대입
+        //arr[0]~arr[9] = 0
+        //arr[10]~arr[19] = 1
+
+        for(i=0; i<=19; i++){
+            arr[i]=n;
+
+            if(i<=9){
+                n=0
+            }else{
+                n=1
+            }
+            
+            
+
+        }
+
+        */
+
+        let arr=new Array(20); //길이가 20개짜리인 배열 선언
+
+        for(let i=0; i<arr.length; i++){ //arr.length : 배열의 길이, 배열은 가급적 등호 사용안하는것이 좋음.
+            //arr[i]=0; //인덱스가 9일때까지
+           // arr[i]=1; //인덱스가 9를 넘어서면
+
+            if(i<=9){
+                arr[i]=0;
+            }else{
+                arr[i]=1;
+            }
+
+            document.write(arr[i]);
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
